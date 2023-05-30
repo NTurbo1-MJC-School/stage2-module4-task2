@@ -15,8 +15,8 @@ public class ProxyConnection implements Connection {
     public void reallyClose() {
         // Write your code here!
         if (!isClosed) {
-            this.realConnection.close();
             isClosed = true;
+            this.realConnection.close();
         }
     }
     // Implement methods here!
@@ -24,6 +24,7 @@ public class ProxyConnection implements Connection {
     @Override
     public void close() {
         if (!isClosed) {
+            isClosed = true;
             connectionPool.releaseConnection(this);
         }
     }
